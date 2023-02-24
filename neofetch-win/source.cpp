@@ -113,7 +113,18 @@ void getresolution(int& horizontal, int& vertical)
 	vertical = desktop.bottom;
 }
 
+std::wstring getconsole() {
+
+	TCHAR console[UNLEN + 1];
+	GetConsoleTitle((TCHAR*)console, 256);
+
+	std::wstring consolestring = console;
+
+	return consolestring;
+}
+
 void debug() {
+
 	std::wcout << getusername() << std::endl;
 	std::wcout << gethostname() << std::endl;
 	std::wcout << getwinver1() << std::endl;
@@ -123,8 +134,9 @@ void debug() {
 	int horizontal = 0;
 	int vertical = 0;
 	getresolution(horizontal, vertical);
-	std::cout << horizontal << 'x' << vertical << '\n';
+	std::cout << horizontal << 'x' << vertical << std::endl;
 
+	std::wcout << getconsole() << std::endl;
 }
 
 int main()
