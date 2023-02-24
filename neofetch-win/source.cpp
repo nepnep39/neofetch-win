@@ -113,9 +113,7 @@ void getresolution(int& horizontal, int& vertical)
 	vertical = desktop.bottom;
 }
 
-int main()
-{
-	//debug
+void debug() {
 	std::wcout << getusername() << std::endl;
 	std::wcout << gethostname() << std::endl;
 	std::wcout << getwinver1() << std::endl;
@@ -127,4 +125,10 @@ int main()
 	getresolution(horizontal, vertical);
 	std::cout << horizontal << 'x' << vertical << '\n';
 
+}
+
+int main()
+{
+	debug();
+	return 0;
 }
