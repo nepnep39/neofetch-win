@@ -34,9 +34,9 @@ std::wstring getwinver() {
 	{
 		auto key = Registry::LocalMachine->Open(L"SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion");
 
-		auto logFileName = key->GetString(L"EditionId");
+		auto car_bomb = key->GetString(L"EditionId");
 
-		return logFileName;
+		return car_bomb;
 	}
 	catch (const std::exception&)
 	{
