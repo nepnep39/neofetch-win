@@ -102,16 +102,13 @@ std::wstring getwinbuild() {
 	
 }
 
-void GetDesktopResolution(int& horizontal, int& vertical)
+void getresolution(int& horizontal, int& vertical)
 {
 	RECT desktop;
-	// Get a handle to the desktop window
 	const HWND hDesktop = GetDesktopWindow();
-	// Get the size of screen to the variable desktop
+
 	GetWindowRect(hDesktop, &desktop);
-	// The top left corner will have coordinates (0,0)
-	// and the bottom right corner will have coordinates
-	// (horizontal, vertical)
+	
 	horizontal = desktop.right;
 	vertical = desktop.bottom;
 }
@@ -124,5 +121,10 @@ int main()
 	std::wcout << getwinver1() << std::endl;
 	std::wcout << getwinver2() << std::endl;
 	std::wcout << getwinbuild() << std::endl;
+	
+	int horizontal = 0;
+	int vertical = 0;
+	getresolution(horizontal, vertical);
+	std::cout << horizontal << 'x' << vertical << '\n';
 
 }
