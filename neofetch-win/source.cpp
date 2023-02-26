@@ -32,12 +32,16 @@ std::wstring getwinver1() {
 	using namespace m4x1m1l14n;
 
 	try
+
 	{
 		auto key = Registry::LocalMachine->Open(L"SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion");
 
 		auto car_bomb = key->GetString(L"ProductName");
 
-		std::wstring s2 = L"Windows 10";
+
+		// this code works but for some reason whenever i query EditionId it gives me "Enterprise" when im on windows 10 pro so we're just scrapping this i guess
+
+		/*std::wstring s2 = L"Windows 10";
 		std::wstring s3 = L"Windows 11";
 
 		if (car_bomb.find(s2) != std::string::npos) {
@@ -51,35 +55,37 @@ std::wstring getwinver1() {
 		else {
 			car_bomb = L"Unknown Windows Version";
 			return car_bomb;
-		}
-	}
-	catch (const std::exception&)
-	{
-		std::wstring error = L"Unknown";
-		return error;
-	}
-
-}
-
-std::wstring getwinver2() {
-
-	using namespace m4x1m1l14n;
-
-	try
-	{
-		auto key = Registry::LocalMachine->Open(L"SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion");
-
-		auto car_bomb = key->GetString(L"EditionId");
+		}*/
 
 		return car_bomb;
 	}
 	catch (const std::exception&)
 	{
-		std::wstring error = L"Unknown";
+		std::wstring error = L"Unknown Windows Version";
 		return error;
 	}
 
 }
+
+//std::wstring getwinver2() {
+//
+//	using namespace m4x1m1l14n;
+//
+//	try
+//	{
+//		auto key = Registry::LocalMachine->Open(L"SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion");
+//
+//		auto car_bomb = key->GetString(L"EditionId");
+//
+//		return car_bomb;
+//	}
+//	catch (const std::exception&)
+//	{
+//		std::wstring error = L"Unknown";
+//		return error;
+//	}
+//
+//}
 
 std::wstring getwinbuild() {
 
@@ -128,7 +134,7 @@ void debug() {
 	std::wcout << getusername() << std::endl;
 	std::wcout << gethostname() << std::endl;
 	std::wcout << getwinver1() << std::endl;
-	std::wcout << getwinver2() << std::endl;
+	//std::wcout << getwinver2() << std::endl;
 	std::wcout << getwinbuild() << std::endl;
 	
 	int horizontal = 0;
