@@ -8,10 +8,9 @@
 #include <Registry.hpp>
 
 #define setlght SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 3)
-#define setdark SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 9)
 #define setdflt SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 7)
 
-// win10 ascii art terminal colour should be 3, win11 colour should be 9, default (for text) is 7
+// win10 ascii art terminal colour should be 3, default (for text) is 7
 // you can modify these defines to customize the output colours!
 
 std::wstring getusername() {
@@ -279,6 +278,29 @@ int debug() {
 void neofetch() {
 
 	// actual render
+
+	std::wstring wide0(getusername());
+
+	std::string username;
+	std::transform(wide0.begin(), wide0.end(), std::back_inserter(username), [](wchar_t c) {
+		return (char)c;
+		});
+
+	//username = "Administrator";
+
+	std::wstring wide1(gethostname());
+
+	std::string hostname;
+	std::transform(wide1.begin(), wide1.end(), std::back_inserter(hostname), [](wchar_t c) {
+		return (char)c;
+		});
+
+	/*std::cout << username << std::endl;
+	std::cout << hostname << std::endl;
+
+	std::cout << username.length() << std::endl;
+	std::cout << hostname.length() << std::endl;*/
+
 	std::wstring divider = L"--------------";
 
 	int uptime = std::chrono::duration_cast<std::chrono::milliseconds>(getuptime()).count();
@@ -314,7 +336,7 @@ void neofetch() {
 		using namespace std;
 
 		setlght; wcout << win10art01 << setw(19) << endl;
-		setlght; wcout << win10art02 << setw(15) << right << getusername(); setdflt; wcout << '@'; setlght;  wcout << gethostname() << endl; setdflt;
+		setlght; wcout << win10art02 << setw(12 + username.length()) << right << getusername(); setdflt; cout << '@'; setlght;  wcout << gethostname() << endl; setdflt;
 		setlght; wcout << win10art03; setdflt; wcout << setw(26) << right << divider << endl;
 		setlght; wcout << win10art04 << setw(16) << right << L"OS: "; setdflt; wcout << getwinver() << endl;
 		setlght; wcout << win10art05 << setw(19) << right << L"Build: "; setdflt; wcout << getwinbuild() << endl;
@@ -341,25 +363,25 @@ void neofetch() {
 
 		using namespace std;
 
-		setdark; wcout << win11art01 << setw(15) << right << getusername(); setdflt; wcout << '@'; setdark;  wcout << gethostname() << endl; setdflt;
-		setdark; wcout << win11art02; setdflt; wcout << setw(26) << right << divider << endl;
-		setdark; wcout << win11art03 << setw(16) << right << L"OS: "; setdflt; wcout << getwinver() << endl;
-		setdark; wcout << win11art04 << setw(19) << right << L"Build: "; setdflt; wcout << getwinbuild() << endl;
-		setdark; wcout << win11art05 << setw(20) << right << L"Uptime: "; setdflt; cout << hours << " " << plural1 << ", " << minutes << " " << plural2 << std::endl;
-		setdark; wcout << win11art06 << setw(24) << right << L"Resolution: "; setdflt; cout << horizontal << 'x' << vertical << std::endl;
-		setdark; wcout << win11art07 << setw(22) << right << L"Terminal: "; setdflt; wcout << getconsole() << endl;
-		setdark; wcout << win11art08 << setw(17) << right << L"CPU: "; setdflt; wcout << getcpu() << endl;
-		setdark; wcout << win11art09 << setw(17) << right << L"GPU: "; setdflt; wcout << getgpu() << endl;
-		setdark; wcout << win11art10 << setw(20) << right << L"Memory: "; setdflt; cout << getmem(2) << " MB / " << getmem(1) << " MB (" << getmem(0) << "% in use)" << endl;
-		setdark; wcout << win11art11 << setw(19) << endl;
-		setdark; wcout << win11art12 << setw(19) << endl;
-		setdark; wcout << win11art13 << setw(19) << endl;
-		setdark; wcout << win11art14 << setw(19) << endl;
-		setdark; wcout << win11art15 << setw(19) << endl;
-		setdark; wcout << win11art16 << setw(19) << endl;
-		setdark; wcout << win11art17 << setw(19) << endl;
-		setdark; wcout << win11art18 << setw(19) << endl;
-		setdark; wcout << win11art19 << setw(19) << endl;
+		setlght; wcout << win10art02 << setw(12 + username.length()) << right << getusername(); setdflt; cout << '@'; setlght;  wcout << gethostname() << endl; setdflt;
+		setlght; wcout << win11art02; setdflt; wcout << setw(26) << right << divider << endl;
+		setlght; wcout << win11art03 << setw(16) << right << L"OS: "; setdflt; wcout << getwinver() << endl;
+		setlght; wcout << win11art04 << setw(19) << right << L"Build: "; setdflt; wcout << getwinbuild() << endl;
+		setlght; wcout << win11art05 << setw(20) << right << L"Uptime: "; setdflt; cout << hours << " " << plural1 << ", " << minutes << " " << plural2 << std::endl;
+		setlght; wcout << win11art06 << setw(24) << right << L"Resolution: "; setdflt; cout << horizontal << 'x' << vertical << std::endl;
+		setlght; wcout << win11art07 << setw(22) << right << L"Terminal: "; setdflt; wcout << getconsole() << endl;
+		setlght; wcout << win11art08 << setw(17) << right << L"CPU: "; setdflt; wcout << getcpu() << endl;
+		setlght; wcout << win11art09 << setw(17) << right << L"GPU: "; setdflt; wcout << getgpu() << endl;
+		setlght; wcout << win11art10 << setw(20) << right << L"Memory: "; setdflt; cout << getmem(2) << " MB / " << getmem(1) << " MB (" << getmem(0) << "% in use)" << endl;
+		setlght; wcout << win11art11 << setw(19) << endl;
+		setlght; wcout << win11art12 << setw(19) << endl;
+		setlght; wcout << win11art13 << setw(19) << endl;
+		setlght; wcout << win11art14 << setw(19) << endl;
+		setlght; wcout << win11art15 << setw(19) << endl;
+		setlght; wcout << win11art16 << setw(19) << endl;
+		setlght; wcout << win11art17 << setw(19) << endl;
+		setlght; wcout << win11art18 << setw(19) << endl;
+		setlght; wcout << win11art19 << setw(19) << endl;
 
 		setdflt;
 	
@@ -368,7 +390,7 @@ void neofetch() {
 
 		using namespace std;
 
-		setlght; wcout << unknownart01 << setw(15) << right << getusername(); setdflt; wcout << '@'; setlght;  wcout << gethostname() << endl; setdflt;
+		setlght; wcout << win10art02 << setw(12 + username.length()) << right << getusername(); setdflt; cout << '@'; setlght;  wcout << gethostname() << endl; setdflt;
 		setlght; wcout << unknownart02; setdflt; wcout << setw(26) << right << divider << endl;
 		setlght; wcout << unknownart03 << setw(16) << right << L"OS: "; setdflt; wcout << getwinver() << endl;
 		setlght; wcout << unknownart04 << setw(19) << right << L"Build: "; setdflt; wcout << getwinbuild() << endl;
