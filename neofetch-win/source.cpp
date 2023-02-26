@@ -40,20 +40,29 @@ std::wstring getwinver() {
 	std::wstring car_bomb;
 	using namespace m4x1m1l14n;
 
-	try
-
-	{
+	try {
 		auto key = Registry::LocalMachine->Open(L"SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion");
 
 		auto car_bomb = key->GetString(L"ProductName");
 		// don't ask
 
-		return car_bomb;
+		std::wstring ws = key->GetString(L"CurrentBuild");
+		int buildint = std::stoi(ws);
+
+		if (buildint > 21999) {
+			
+			car_bomb = L"Windows 11 " + key->GetString(L"EditionID");
+			return car_bomb;
+		}
+		else {
+			car_bomb = L"Windows 10 " + key->GetString(L"EditionID");
+			return car_bomb;
+		}
 	}
 	catch (const std::exception&)
 	{
-		std::wstring error = L"Unknown";
-		return error;
+		car_bomb = L"Unknown";
+		return car_bomb;
 	}
 
 }
@@ -62,8 +71,8 @@ std::wstring getwinver() {
 //
 //	using namespace m4x1m1l14n;
 //
-//	try
-//	{
+//	try {
+//
 //		auto key = Registry::LocalMachine->Open(L"SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion");
 //
 //		auto car_bomb = key->GetString(L"EditionId");
@@ -82,8 +91,7 @@ std::wstring getwinbuild() {
 
 	using namespace m4x1m1l14n;
 
-	try
-	{
+	try {
 		auto key = Registry::LocalMachine->Open(L"SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion");
 
 		auto build = key->GetString(L"DisplayVersion");
@@ -363,7 +371,7 @@ void neofetch() {
 
 		using namespace std;
 
-		setlght; wcout << win10art02 << setw(12 + username.length()) << right << getusername(); setdflt; cout << '@'; setlght;  wcout << gethostname() << endl; setdflt;
+		setlght; wcout << win11art01 << setw(12 + username.length()) << right << getusername(); setdflt; cout << '@'; setlght;  wcout << gethostname() << endl; setdflt;
 		setlght; wcout << win11art02; setdflt; wcout << setw(26) << right << divider << endl;
 		setlght; wcout << win11art03 << setw(16) << right << L"OS: "; setdflt; wcout << getwinver() << endl;
 		setlght; wcout << win11art04 << setw(19) << right << L"Build: "; setdflt; wcout << getwinbuild() << endl;
@@ -390,7 +398,7 @@ void neofetch() {
 
 		using namespace std;
 
-		setlght; wcout << win10art02 << setw(12 + username.length()) << right << getusername(); setdflt; cout << '@'; setlght;  wcout << gethostname() << endl; setdflt;
+		setlght; wcout << unknownart01 << setw(12 + username.length()) << right << getusername(); setdflt; cout << '@'; setlght;  wcout << gethostname() << endl; setdflt;
 		setlght; wcout << unknownart02; setdflt; wcout << setw(26) << right << divider << endl;
 		setlght; wcout << unknownart03 << setw(16) << right << L"OS: "; setdflt; wcout << getwinver() << endl;
 		setlght; wcout << unknownart04 << setw(19) << right << L"Build: "; setdflt; wcout << getwinbuild() << endl;
