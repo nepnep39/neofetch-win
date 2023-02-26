@@ -258,19 +258,31 @@ void debug() {
 	std::wcout << getcpu() << std::endl;
 	std::wcout << getgpu() << std::endl;
 
-	std::cout << getmem(0) << std::endl;
-	std::cout << getmem(1) << std::endl;
-	std::cout << getmem(2) << std::endl;
+	std::cout << getmem(2) << " MB / " << getmem(1) << " MB (" << getmem(0) << "% in use)";
+
+	// win10 colour should be 3, win11 colour should be 9
+
+	HANDLE terminal;
+	terminal = GetStdHandle(STD_OUTPUT_HANDLE);
+	int c;
 
 	if (artsel() == 0) {
+		int c = 3;
+		SetConsoleTextAttribute(terminal, c);
 		std::cout << win10art << std::endl;
 	}
 	else if (artsel() == 1) {
+		int c = 9;
+		SetConsoleTextAttribute(terminal, c);
 		std::cout << win11art << std::endl;
 	}
 	else {
+		int c = 3;
+		SetConsoleTextAttribute(terminal, c);
 		std::cout << unknownart << std::endl;
 	}
+
+	SetConsoleTextAttribute(terminal, 7);
 
 }
 
