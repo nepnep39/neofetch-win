@@ -12,6 +12,8 @@
 #include <stdexcept>
 #include <system_error>
 
+// this header was not written by me, many thanks to m4x1m1l14n on Github for making my life a lot easier (well, at least the part of my life involving regkey string queries)
+
 namespace m4x1m1l14n
 {
 	namespace Registry

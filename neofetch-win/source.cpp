@@ -40,6 +40,7 @@ std::wstring getwinver() {
 		auto key = Registry::LocalMachine->Open(L"SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion");
 
 		auto car_bomb = key->GetString(L"ProductName");
+		// don't ask
 
 		return car_bomb;
 	}
@@ -163,18 +164,35 @@ int artsel() {
 	std::wstring win10 = L"Windows 10";
 	std::wstring win11 = L"Windows 11";
 	int artint;
+	int c;
+
+	HANDLE terminal = GetStdHandle(STD_OUTPUT_HANDLE);
+
+	// win10 terminal colour should be 3, win11 colour should be 9
 
 	if (getwinver().find(win10) != std::string::npos) {
-		artint = 0;
-		return artint;
+
+		c = 3;
+
+		SetConsoleTextAttribute(terminal, c);
+		return artint = 0;
+
 	}
 	else if (getwinver().find(win11) != std::string::npos) {
-		artint = 1;
-		return artint;
+
+		c = 9;
+
+		SetConsoleTextAttribute(terminal, c);
+		return artint = 1;
+
 	}
 	else {
-		artint = 2;
-		return artint;
+		
+		c = 3;
+
+		SetConsoleTextAttribute(terminal, c);
+		return artint = 2;
+
 	}
 
 }
@@ -202,7 +220,7 @@ int getmem(int typesel) {
 	}
 }
 
-void debug() {
+int debug() {
 
 	// calling this function lists all vars in a list without labels or any fancy stuff
 
@@ -260,34 +278,59 @@ void debug() {
 
 	std::cout << getmem(2) << " MB / " << getmem(1) << " MB (" << getmem(0) << "% in use)";
 
-	// win10 colour should be 3, win11 colour should be 9
-
-	HANDLE terminal;
-	terminal = GetStdHandle(STD_OUTPUT_HANDLE);
-	int c;
-
 	if (artsel() == 0) {
-		int c = 3;
-		SetConsoleTextAttribute(terminal, c);
-		std::cout << win10art << std::endl;
+
+		std::wcout << win10art << std::endl;
 	}
 	else if (artsel() == 1) {
-		int c = 9;
-		SetConsoleTextAttribute(terminal, c);
-		std::cout << win11art << std::endl;
+
+		std::wcout << win11art << std::endl;
+	}
+	else if (artsel() == 2) {
+
+		std::wcout << unknownart << std::endl;
+	}
+	else {	
+
+		return 0;
+	}
+
+	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 7);
+	return 0;
+
+}
+
+void neofetch() {
+
+	// actual render
+
+	if (artsel() == 0) {
+
+		std::wcout << std::left << win10art;
+		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 7);
+		std::wcout << std::setw(40) << std::right << getcpu() << std::endl;
+	}
+	else if (artsel() == 1) {
+
+		std::wcout << std::left << win11art << std::setw(40) << std::right << "Sample text" << std::endl;
+	}
+	else if (artsel() == 2) {
+
+		std::wcout << std::left << unknownart << std::setw(40) << std::right << "Sample text" << std::endl;
 	}
 	else {
-		int c = 3;
-		SetConsoleTextAttribute(terminal, c);
-		std::cout << unknownart << std::endl;
+		
+		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 7);
+		std::cout << "Unable to determine Windows version." << std::endl;
+		std::system("PAUSE");
+
 	}
-
-	SetConsoleTextAttribute(terminal, 7);
-
 }
 
 int main()
 {
-	debug();
+	//debug();
+
+	neofetch();
 	return 0;
 }
