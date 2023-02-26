@@ -179,9 +179,32 @@ int artsel() {
 
 }
 
+int getmem(int typesel) {
+
+	MEMORYSTATUSEX mem{};
+
+	mem.dwLength = sizeof(mem);
+
+	GlobalMemoryStatusEx(&mem);
+
+	int percent = mem.dwMemoryLoad;
+	int total = mem.ullTotalPhys / 1048576;
+	int avail = mem.ullAvailPhys / 1048576;
+
+	if (typesel == 0) {
+		return percent;
+	}
+	else if (typesel == 1) {
+		return total;
+	}
+	else {
+		return avail;
+	}
+}
+
 void debug() {
 
-	// calling this function lists all vars in a list without the fancy stuff
+	// calling this function lists all vars in a list without labels or any fancy stuff
 
 	std::wcout << getusername() << std::endl;
 	std::wcout << gethostname() << std::endl;
@@ -235,14 +258,18 @@ void debug() {
 	std::wcout << getcpu() << std::endl;
 	std::wcout << getgpu() << std::endl;
 
+	std::cout << getmem(0) << std::endl;
+	std::cout << getmem(1) << std::endl;
+	std::cout << getmem(2) << std::endl;
+
 	if (artsel() == 0) {
-		std::cout << win10art;
+		std::cout << win10art << std::endl;
 	}
 	else if (artsel() == 1) {
-		std::cout << win11art;
+		std::cout << win11art << std::endl;
 	}
 	else {
-		std::cout << unknownart;
+		std::cout << unknownart << std::endl;
 	}
 
 }
