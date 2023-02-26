@@ -2,12 +2,14 @@
 #include <windows.h>
 #include <string.h>
 #include <Lmcons.h>
-#include <Registry.hpp>
 #include <chrono>
+
+#include <art.h>
+#include <Registry.hpp>
 
 std::wstring getusername() {
 	
-	TCHAR username[UNLEN + 1];
+	TCHAR username[UNLEN + 1]{};
 	DWORD size = UNLEN + 1;
 	GetUserName((TCHAR*)username, &size);
 
@@ -18,7 +20,7 @@ std::wstring getusername() {
 
 std::wstring gethostname() {
 
-	TCHAR hostname[UNLEN + 1];
+	TCHAR hostname[UNLEN + 1]{};
 	DWORD size = UNLEN + 1;
 	GetComputerName((TCHAR*)hostname, &size);
 
@@ -27,7 +29,7 @@ std::wstring gethostname() {
 	return userhost;
 }
 
-std::wstring getwinver1() {
+std::wstring getwinver() {
 
 	std::wstring car_bomb;
 	using namespace m4x1m1l14n;
@@ -38,25 +40,6 @@ std::wstring getwinver1() {
 		auto key = Registry::LocalMachine->Open(L"SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion");
 
 		auto car_bomb = key->GetString(L"ProductName");
-
-
-		// this code works but for some reason whenever i query EditionId it gives me "Enterprise" when im on windows 10 pro so we're just scrapping this i guess
-
-		/*std::wstring s2 = L"Windows 10";
-		std::wstring s3 = L"Windows 11";
-
-		if (car_bomb.find(s2) != std::string::npos) {
-			car_bomb = s2;
-			return car_bomb;
-		}
-		else if (car_bomb.find(s3) != std::string::npos) {
-			car_bomb = s3;
-			return car_bomb;
-		}
-		else {
-			car_bomb = L"Unknown Windows Version";
-			return car_bomb;
-		}*/
 
 		return car_bomb;
 	}
@@ -121,7 +104,7 @@ void getresolution(int& horizontal, int& vertical)
 
 std::wstring getconsole() {
 
-	TCHAR console[UNLEN + 1];
+	TCHAR console[UNLEN + 1]{};
 	GetConsoleTitle((TCHAR*)console, 256);
 
 	std::wstring consolestring = console;
@@ -175,12 +158,34 @@ std::wstring getgpu() {
 	}
 
 }
+int artsel() {
+
+	std::wstring win10 = L"Windows 10";
+	std::wstring win11 = L"Windows 11";
+	int artint;
+
+	if (getwinver().find(win10) != std::string::npos) {
+		artint = 0;
+		return artint;
+	}
+	else if (getwinver().find(win11) != std::string::npos) {
+		artint = 1;
+		return artint;
+	}
+	else {
+		artint = 2;
+		return artint;
+	}
+
+}
 
 void debug() {
 
+	// calling this function lists all vars in a list without the fancy stuff
+
 	std::wcout << getusername() << std::endl;
 	std::wcout << gethostname() << std::endl;
-	std::wcout << getwinver1() << std::endl;
+	std::wcout << getwinver() << std::endl;
 	//std::wcout << getwinver2() << std::endl;
 	std::wcout << getwinbuild() << std::endl;
 
@@ -229,6 +234,16 @@ void debug() {
 	std::wcout << getconsole() << std::endl;
 	std::wcout << getcpu() << std::endl;
 	std::wcout << getgpu() << std::endl;
+
+	if (artsel() == 0) {
+		std::cout << win10art;
+	}
+	else if (artsel() == 1) {
+		std::cout << win11art;
+	}
+	else {
+		std::cout << unknownart;
+	}
 
 }
 

@@ -18,7 +18,7 @@ std::string win10art = R"(
         llllllllllllll  lllllllllllllllllll
         llllllllllllll  lllllllllllllllllll
         `'ccllllllllll  lllllllllllllllllll
-               `' \\*::  :ccllllllllllllllll
+              `' \\*::  :ccllllllllllllllll
                                ````''*::cll
                                          ``
         )";
