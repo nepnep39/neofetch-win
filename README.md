@@ -14,9 +14,10 @@ That's it
 ## Pictures ##
 
 ![win10](https://user-images.githubusercontent.com/119973523/221455043-a48d6c34-8673-407c-9dc3-febef0ded808.png)
+
 ![win10](https://user-images.githubusercontent.com/119973523/222497683-b473a644-3bb7-43fb-8bbc-ff5bf3a87481.png)
 
-![win11](placeholder)
+![win11](https://user-images.githubusercontent.com/119973523/224430965-30442685-638f-4096-8579-b97700b419e6.png)
 
 sort of works on wine too?
 
