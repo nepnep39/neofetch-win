@@ -1,4 +1,4 @@
-#include <iostream>
+﻿#include <iostream>
 #include <windows.h>
 #include <string.h>
 #include <Lmcons.h>
@@ -46,7 +46,7 @@ std::wstring getwinver() {
 		auto car_bomb = key->GetString(L"ProductName");
 		// don't ask
 
-		std::wstring ws = key->GetString(L"CurrentBuild");
+		/*std::wstring ws = key->GetString(L"CurrentBuild");
 		int buildint = std::stoi(ws);
 
 		if (buildint > 21999) {
@@ -57,7 +57,9 @@ std::wstring getwinver() {
 		else {
 			car_bomb = L"Windows 10 " + key->GetString(L"EditionID");
 			return car_bomb;
-		}
+		}*/
+
+		return car_bomb;
 	}
 	catch (const std::exception&)
 	{
@@ -168,7 +170,7 @@ std::wstring getgpu() {
 	}
 	catch (const std::exception&)
 	{
-		std::wstring error = L"Unknown";
+		std::wstring error = L"Unknown (try running WinSAT to fix this)";
 		return error;
 	}
 
@@ -218,6 +220,19 @@ int getmem(int typesel) {
 	}
 	else {
 		return avail;
+	}
+}
+
+void colourbar() {
+
+	int i = 0;
+	char sq = static_cast<char>(254);
+	while (i < 16)
+	{
+		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), i);
+		std::wcout << sq << sq << sq;
+		i++;
+
 	}
 }
 
@@ -355,7 +370,7 @@ void neofetch() {
 		setlght; wcout << win10art10 << setw(17) << right << L"GPU: "; setdflt; wcout << getgpu() << endl;
 		setlght; wcout << win10art11 << setw(20) << right << L"Memory: "; setdflt; cout << getmem(2) << " MB / " << getmem(1) << " MB (" << getmem(0) << "% in use)" << endl;
 		setlght; wcout << win10art12 << setw(19) << endl;
-		setlght; wcout << win10art13 << setw(19) << endl;
+		setlght; wcout << win10art09 << setw(13) << right;  colourbar(); cout << endl;
 		setlght; wcout << win10art14 << setw(19) << endl;
 		setlght; wcout << win10art15 << setw(19) << endl;
 		setlght; wcout << win10art16 << setw(19) << endl;
@@ -382,7 +397,7 @@ void neofetch() {
 		setlght; wcout << win11art09 << setw(17) << right << L"GPU: "; setdflt; wcout << getgpu() << endl;
 		setlght; wcout << win11art10 << setw(20) << right << L"Memory: "; setdflt; cout << getmem(2) << " MB / " << getmem(1) << " MB (" << getmem(0) << "% in use)" << endl;
 		setlght; wcout << win11art11 << setw(19) << endl;
-		setlght; wcout << win11art12 << setw(19) << endl;
+		setlght; wcout << win11art12 << setw(13) << right;  colourbar(); cout << endl;
 		setlght; wcout << win11art13 << setw(19) << endl;
 		setlght; wcout << win11art14 << setw(19) << endl;
 		setlght; wcout << win11art15 << setw(19) << endl;
@@ -409,7 +424,7 @@ void neofetch() {
 		setlght; wcout << unknownart09 << setw(17) << right << L"GPU: "; setdflt; wcout << getgpu() << endl;
 		setlght; wcout << unknownart10 << setw(20) << right << L"Memory: "; setdflt; cout << getmem(2) << " MB / " << getmem(1) << " MB (" << getmem(0) << "% in use)" << endl;
 		setlght; wcout << unknownart11 << setw(19) << endl;
-		setlght; wcout << unknownart12 << setw(19) << endl;
+		setlght; wcout << unknownart12 << setw(13) << right;  colourbar(); cout << endl;
 		setlght; wcout << unknownart13 << setw(19) << endl;
 		setlght; wcout << unknownart14 << setw(19) << endl;
 		setlght; wcout << unknownart15 << setw(19) << endl;
