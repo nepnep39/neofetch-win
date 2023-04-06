@@ -13,7 +13,7 @@ That's it
 
 ## Pictures ##
 
-![win10](https://user-images.githubusercontent.com/119973523/221455043-a48d6c34-8673-407c-9dc3-febef0ded808.png)
+![1 1 0](https://user-images.githubusercontent.com/119973523/230252627-1642aa57-01a3-4d43-b2bf-2636be55d75d.png)
 
 ![win10](https://user-images.githubusercontent.com/119973523/222497683-b473a644-3bb7-43fb-8bbc-ff5bf3a87481.png)
 
@@ -27,3 +27,4 @@ Evil Jay — Today at 7:05 PM
 Well you're gonna have a hard time selling your bootleg neofetch :stoichSlow:
 
 made with love by nepnep
+
