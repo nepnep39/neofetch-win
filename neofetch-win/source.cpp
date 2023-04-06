@@ -46,20 +46,26 @@ std::wstring getwinver() {
 		auto car_bomb = key->GetString(L"ProductName");
 		// don't ask
 
-		/*std::wstring ws = key->GetString(L"CurrentBuild");
+		bool win11 = true;
+
+		std::wstring ws = key->GetString(L"CurrentBuild");
 		int buildint = std::stoi(ws);
 
 		if (buildint > 21999) {
 			
-			car_bomb = L"Windows 11 " + key->GetString(L"EditionID");
-			return car_bomb;
+			win11 = true;
 		}
 		else {
-			car_bomb = L"Windows 10 " + key->GetString(L"EditionID");
-			return car_bomb;
-		}*/
+			win11 = false;
+		}
+
+		if (win11 == true) {
+			car_bomb = L"Windows 11";
+		}
+		else {}
 
 		return car_bomb;
+		
 	}
 	catch (const std::exception&)
 	{
