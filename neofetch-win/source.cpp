@@ -127,8 +127,8 @@ void getresolution(int& horizontal, int& vertical)
 
 std::wstring getconsole() {
 
-	TCHAR console[UNLEN + 1]{};
-	GetConsoleTitle((TCHAR*)console, 256);
+	WCHAR console[UNLEN + 1]{};
+	GetConsoleTitleW((WCHAR*)console, 256);
 
 	std::wstring consolestring = console;
 
@@ -336,9 +336,11 @@ void neofetch() {
 
 	int minutes = (int)((uptime / (1000 * 60)) % 60);
 	int hours = (int)((uptime / (1000 * 60 * 60)) % 24);
+	int days = (int)(uptime / (1000 * 60 * 60 * 24));
 
 	std::string plural1;
 	std::string plural2;
+	std::string plural3;
 
 	if (hours == 1)
 	{
@@ -356,6 +358,14 @@ void neofetch() {
 		plural2 = "minutes";
 	}
 
+	if (days == 1)
+	{
+		plural3 = "day";
+	}
+	else {
+		plural3 = "days";
+	}
+
 	int horizontal = 0;
 	int vertical = 0;
 	getresolution(horizontal, vertical);
@@ -369,7 +379,7 @@ void neofetch() {
 		setlght; wcout << win10art03; setdflt; wcout << setw(26) << right << divider << endl;
 		setlght; wcout << win10art04 << setw(16) << right << L"OS: "; setdflt; wcout << getwinver() << endl;
 		setlght; wcout << win10art05 << setw(19) << right << L"Build: "; setdflt; wcout << getwinbuild() << endl;
-		setlght; wcout << win10art06 << setw(20) << right << L"Uptime: "; setdflt; cout << hours << " " << plural1 << ", " << minutes << " " << plural2 << std::endl;
+		setlght; wcout << win10art06 << setw(20) << right << L"Uptime: "; setdflt; cout << days << " " << plural3 << ", " << hours << " " << plural1 << ", " << minutes << " " << plural2 << std::endl;
 		setlght; wcout << win10art07 << setw(24) << right << L"Resolution: "; setdflt; cout << horizontal << 'x' << vertical << std::endl;
 		setlght; wcout << win10art08 << setw(22) << right << L"Terminal: "; setdflt; wcout << getconsole() << endl;
 		setlght; wcout << win10art09 << setw(17) << right << L"CPU: "; setdflt; wcout << getcpu() << endl;
@@ -396,7 +406,7 @@ void neofetch() {
 		setlght; wcout << win11art02; setdflt; wcout << setw(26) << right << divider << endl;
 		setlght; wcout << win11art03 << setw(16) << right << L"OS: "; setdflt; wcout << getwinver() << endl;
 		setlght; wcout << win11art04 << setw(19) << right << L"Build: "; setdflt; wcout << getwinbuild() << endl;
-		setlght; wcout << win11art05 << setw(20) << right << L"Uptime: "; setdflt; cout << hours << " " << plural1 << ", " << minutes << " " << plural2 << std::endl;
+		setlght; wcout << win11art05 << setw(20) << right << L"Uptime: "; setdflt; cout << days << " " << plural3 << ", " << hours << " " << plural1 << ", " << minutes << " " << plural2 << std::endl;
 		setlght; wcout << win11art06 << setw(24) << right << L"Resolution: "; setdflt; cout << horizontal << 'x' << vertical << std::endl;
 		setlght; wcout << win11art07 << setw(22) << right << L"Terminal: "; setdflt; wcout << getconsole() << endl;
 		setlght; wcout << win11art08 << setw(17) << right << L"CPU: "; setdflt; wcout << getcpu() << endl;
@@ -423,7 +433,7 @@ void neofetch() {
 		setlght; wcout << unknownart02; setdflt; wcout << setw(26) << right << divider << endl;
 		setlght; wcout << unknownart03 << setw(16) << right << L"OS: "; setdflt; wcout << getwinver() << endl;
 		setlght; wcout << unknownart04 << setw(19) << right << L"Build: "; setdflt; wcout << getwinbuild() << endl;
-		setlght; wcout << unknownart05 << setw(20) << right << L"Uptime: "; setdflt; cout << hours << " " << plural1 << ", " << minutes << " " << plural2 << std::endl;
+		setlght; wcout << unknownart05 << setw(20) << right << L"Uptime: "; setdflt; cout << days << " " << plural3 << ", " << hours << " " << plural1 << ", " << minutes << " " << plural2 << std::endl;
 		setlght; wcout << unknownart06 << setw(24) << right << L"Resolution: "; setdflt; cout << horizontal << 'x' << vertical << std::endl;
 		setlght; wcout << unknownart07 << setw(22) << right << L"Terminal: "; setdflt; wcout << getconsole() << endl;
 		setlght; wcout << unknownart08 << setw(17) << right << L"CPU: "; setdflt; wcout << getcpu() << endl;
