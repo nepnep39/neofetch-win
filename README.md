@@ -19,10 +19,6 @@ That's it
 
 ![win11](https://user-images.githubusercontent.com/119973523/224430965-30442685-638f-4096-8579-b97700b419e6.png)
 
-sort of works on wine too?
-
-![wine](https://user-images.githubusercontent.com/119973523/221458857-b3a18559-6659-4c50-b697-1d71281b6208.png)
-
 Evil Jay — Today at 7:05 PM
 Well you're gonna have a hard time selling your bootleg neofetch :stoichSlow:
 
