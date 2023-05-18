@@ -127,12 +127,14 @@ void getresolution(int& horizontal, int& vertical)
 
 std::wstring getconsole() {
 
+	std::setlocale(LC_ALL, "en_US.UTF-8");
+
 	WCHAR console[UNLEN + 1]{};
 	GetConsoleTitleW((WCHAR*)console, 256);
 
 	std::wstring consolestring = console;
 
-	return consolestring;
+	return console;
 }
 
 std::chrono::milliseconds getuptime() {
@@ -231,15 +233,21 @@ int getmem(int typesel) {
 
 void colourbar() {
 
+	// std::setlocale(LC_ALL, "en_US.UTF-16");
+
 	int i = 0;
-	char sq = static_cast<char>(254);
-	while (i < 16)
+	// char sq = static_cast<char>(254);
+
+	while (i < 254)
 	{
+
 		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), i);
-		std::wcout << sq << sq << sq;
-		i++;
+		std::wcout << " ";
+		i = i + 4;
 
 	}
+
+	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 0);
 }
 
 int debug() {
