@@ -4,10 +4,14 @@ Simple, ultra-lightweight neofetch clone for Windows 10+ written in C++ and inst
 
 Note: source code relies on C++20 features, if you wish to build it from source, use C++20 or later, otherwise it will NOT compile
 ## Install ##
+Run the following commands
+```powershell
+winget install --id nepnep.neofetch-win
+```
 
-`winget install neofetch`
-
-`neofetch`
+```powershell
+neofetch
+```
 
 That's it
 
