@@ -1,6 +1,6 @@
 # neofetch-win #
 
-Simple, ultra-lightweight neofetch clone for Windows 10+ written in C++ and installable through winget. The executable is just under 70KB and requires no dependencies other than the MS Visual C++ redists (which should be installed already, and if they're not my installer will take care of that for you :)
+Simple, ultra-lightweight neofetch clone for Windows 10+ written in C++ and installable through winget. The executable is just under 75KB and requires no dependencies other than the MS Visual C++ redists (which should be installed already, and if they're not my installer will take care of that for you :)
 
 Note: source code relies on C++20 features, if you wish to build it from source, use C++20 or later, otherwise it will NOT compile
 ## Install ##
@@ -13,7 +13,7 @@ That's it
 
 ## Pictures ##
 
-![1 1 0](https://user-images.githubusercontent.com/119973523/230252627-1642aa57-01a3-4d43-b2bf-2636be55d75d.png)
+![neofetch120](https://github.com/nepnep39/neofetch-win/assets/119973523/54481ac7-d16d-4603-b2b6-866470ca122c)
 
 ![win10](https://user-images.githubusercontent.com/119973523/222497683-b473a644-3bb7-43fb-8bbc-ff5bf3a87481.png)
 
