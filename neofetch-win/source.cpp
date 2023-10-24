@@ -244,7 +244,7 @@ int getmem(int typesel) {
 
 	int percent = mem.dwMemoryLoad;
 	int total = mem.ullTotalPhys / 1048576;
-	int avail = mem.ullAvailPhys / 1048576;
+	int used = total - mem.ullAvailPhys / 1048576;
 
 	if (typesel == 0) {
 		return percent;
@@ -253,7 +253,7 @@ int getmem(int typesel) {
 		return total;
 	}
 	else {
-		return avail;
+		return used;
 	}
 }
 
@@ -384,12 +384,37 @@ void diskbar()
 
 }
 
-void colourbar() {
+void color1() {
 
 	// std::setlocale(LC_ALL, "en_US.UTF-16");
 
 	int i = 0;
 	// char sq = static_cast<char>(254);
+
+	while (i < 127)
+	{
+
+		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), i);
+		std::wcout << " ";
+		i = i + 4;
+
+	}
+
+	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 0);
+}
+
+void color2() {
+
+	int i = 128;
+	int n = 0;
+
+	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 0);
+
+	while (n < 4)
+	{
+		std::wcout << " ";
+		n++;
+	}
 
 	while (i < 254)
 	{
@@ -566,8 +591,8 @@ void neofetch() {
 		setlght; wcout << win10art15 << setw(19) << endl;
 		setlght; wcout << win10art16 << setw(19) << right << L"Disk%: "; setdflt; diskbar(); std::cout << endl;
 		setlght; wcout << win10art17 << setw(19) << endl;
-		setlght; wcout << win10art18 << setw(19) << endl;
-		setlght; wcout << win10art19 << setw(13) << right; colourbar(); cout << endl;
+		setlght; wcout << win10art18 << setw(13) << right; color1(); cout << endl;
+		setlght; wcout << win10art19 << setw(9) << right; color2(); cout << endl;
 		setlght; wcout << win10art20 << setw(19) << endl;
 
 		setdflt;
@@ -593,8 +618,8 @@ void neofetch() {
 		setlght; wcout << win11art14 << setw(19) << endl;
 		setlght; wcout << win11art15 << setw(19) << right << L"Disk%: "; setdflt; diskbar(); std::cout << endl;
 		setlght; wcout << win11art16 << setw(19) << endl;
-		setlght; wcout << win11art17 << setw(19) << endl;
-		setlght; wcout << win11art18 << setw(13) << right; colourbar(); cout << endl;
+		setlght; wcout << win11art17 << setw(13) << right; color1(); cout << endl;
+		setlght; wcout << win11art18 << setw(9) << right; color2(); cout << endl;
 		setlght; wcout << win11art19 << setw(19) << endl;
 
 		setdflt;
@@ -620,8 +645,8 @@ void neofetch() {
 		setlght; wcout << unknownart14 << setw(19) << endl;
 		setlght; wcout << unknownart15 << setw(19) << right << L"Disk%: "; setdflt; diskbar(); std::cout << endl;
 		setlght; wcout << unknownart16 << setw(19) << endl;
-		setlght; wcout << unknownart17 << setw(19) << endl;
-		setlght; wcout << unknownart18 << setw(13) << right; colourbar(); cout << endl;
+		setlght; wcout << unknownart17 << setw(13) << right; color1(); cout << endl;
+		setlght; wcout << unknownart18 << setw(9) << right; color2(); cout << endl;
 		setlght; wcout << unknownart19 << setw(19) << endl;
 
 		setdflt;
