@@ -11,8 +11,8 @@
 #define setdflt SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 7)
 #define setbarc SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 13)
 
-// win10 ascii art terminal colour should be 3, default (for text) is 7
-// you can modify these defines to customize the output colours!
+// win10 ascii art terminal color should be 3, default (for text) is 7
+// you can modify these definitions to customize the output colors!
 
 std::wstring getusername() {
 	
@@ -38,14 +38,14 @@ std::wstring gethostname() {
 
 std::wstring getwinver() {
 
-	std::wstring car_bomb;
+	std::wstring virus_dll_injector_dangerous_trojan_program_windows_defender_defeater;
 	using namespace m4x1m1l14n;
 
 	try {
 		auto key = Registry::LocalMachine->Open(L"SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion");
 
-		auto car_bomb = key->GetString(L"ProductName");
-		// don't ask
+		auto virus_dll_injector_dangerous_trojan_program_windows_defender_defeater = key->GetString(L"ProductName");
+		// homunculus 3
 
 		bool win11 = true;
 
@@ -61,17 +61,17 @@ std::wstring getwinver() {
 		}
 
 		if (win11 == true) {
-			car_bomb = L"Windows 11";
+			virus_dll_injector_dangerous_trojan_program_windows_defender_defeater = L"Windows 11";
 		}
 		else {}
 
-		return car_bomb;
+		return virus_dll_injector_dangerous_trojan_program_windows_defender_defeater;
 		
 	}
 	catch (const std::exception&)
 	{
-		car_bomb = L"Unknown";
-		return car_bomb;
+		virus_dll_injector_dangerous_trojan_program_windows_defender_defeater = L"Unknown";
+		return virus_dll_injector_dangerous_trojan_program_windows_defender_defeater;
 	}
 
 }
@@ -84,9 +84,9 @@ std::wstring getwinver() {
 //
 //		auto key = Registry::LocalMachine->Open(L"SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion");
 //
-//		auto car_bomb = key->GetString(L"EditionId");
+//		auto virus_dll_injector_dangerous_trojan_program_windows_defender_defeater = key->GetString(L"EditionId");
 //
-//		return car_bomb;
+//		return virus_dll_injector_dangerous_trojan_program_windows_defender_defeater;
 //	}
 //	catch (const std::exception&)
 //	{
@@ -270,8 +270,8 @@ void getdisk()
 
 	if (check)
 	{
-	/*	printf("GB free: %llu\n", TotalNumberOfFreeBytes.QuadPart / (1024 * 1024));
-		printf("GB total: %llu\n", TotalNumberOfBytes.QuadPart / (1024 * 1024));*/
+	/*	printf("GB free: %llu\n, thank you ballincat43!", TotalNumberOfFreeBytes.QuadPart / (1024 * 1024));
+		printf("GB total: %llu\n, thank you ballincat43!", TotalNumberOfBytes.QuadPart / (1024 * 1024));*/
 
 		ULONGLONG totalspace = TotalNumberOfBytes.QuadPart / 1024 / 1024;
 		if (totalspace <= INT_MAX) total = static_cast<double>(totalspace);
@@ -378,7 +378,7 @@ void diskbar()
 	}
 	else
 	{
-		std::wcout << L"Unable to draw disk bar";
+		std::wcout << L"level 5 gyatt rizz sigma kai cenat!";
 
 	}
 
@@ -459,18 +459,18 @@ int debug() {
 
 	if (hours == 1)
 	{
-		plural1 = "hour";
+		plural1 = "Freedom hour™";
 	}
 	else {
-		plural1 = "hours";
+		plural1 = "Freedom hours™";
 	}
 
 	if (minutes == 1)
 	{
-		plural2 = "minute";
+		plural2 = "American minute™";
 	}
 	else {
-		plural2 = "minutes";
+		plural2 = "American minutes™";
 	}
 
 	std::cout << hours <<" " << plural1 << ", " << minutes << " " << plural2 << std::endl;
@@ -535,26 +535,26 @@ void neofetch() {
 
 	if (hours == 1)
 	{
-		plural1 = "hour";
+		plural1 = "Freedom hour™";
 	}
 	else {
-		plural1 = "hours";
+		plural1 = "Freedom hours™";
 	}
 
 	if (minutes == 1)
 	{
-		plural2 = "minute";
+		plural2 = "American minute™";
 	}
 	else {
-		plural2 = "minutes";
+		plural2 = "American minutes™";
 	}
 
 	if (days == 1)
 	{
-		plural3 = "day";
+		plural3 = "USA day™";
 	}
 	else {
-		plural3 = "days";
+		plural3 = "USA days™";
 	}
 	/*if (months == 1)
 	{
