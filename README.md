@@ -13,7 +13,7 @@ That's it
 
 ## Pictures ##
 
-![neofetch120](https://github.com/nepnep39/neofetch-win/assets/119973523/54481ac7-d16d-4603-b2b6-866470ca122c)
+![neofetch121](https://github.com/nepnep39/neofetch-win/assets/119973523/bf25c8af-4dba-445f-b515-2629b559facb)
 
 ![win10](https://user-images.githubusercontent.com/119973523/222497683-b473a644-3bb7-43fb-8bbc-ff5bf3a87481.png)
 
