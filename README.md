@@ -2,7 +2,8 @@
 
 Simple, ultra-lightweight neofetch clone for Windows 10+ written in C++ and installable through winget. The executable is just under 75KB and requires no dependencies other than the MS Visual C++ redists (which should be installed already, and if they're not my installer will take care of that for you :)
 
-2024-03-27 - Thanks for 50 000 downloads!! 🥳🎉
+2024-03-27 - Thanks for 50 000 downloads!
+2025-01-17 - Thanks for 100 000 downloads!! 🥳🎉
 
 ## Install ##
 
