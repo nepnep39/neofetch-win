@@ -5,9 +5,11 @@
 #include <chrono>
 #include <iomanip>	// not needed in C++20
 #include <algorithm>	// not needed in C++20
+#include <cwctype>
 
-#include <art.h>
-#include <Registry.hpp>
+#include "art.h"
+#include "Registry.hpp"
+#include "Process.hpp"
 
 #define setlght SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 3)
 #define setdflt SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 7)
@@ -154,15 +156,34 @@ void getresolution(int& horizontal, int& vertical, int& hz)
 }
 
 std::wstring getconsole() {
+	std::wstring name;
 
-	std::setlocale(LC_ALL, "en_US.UTF-8");
+	auto parent_process = get_parent_process();
+	auto parent_name = get_process_name(parent_process);
 
-	WCHAR console[UNLEN + 1]{};
-	GetConsoleTitleW((WCHAR*)console, 256);
+	std::transform(parent_name.begin(), parent_name.end(), parent_name.begin(), std::towlower);
 
-	std::wstring consolestring = console;
+	if (parent_name == L"pwsh.exe" || parent_name == L"powershell.exe") {
+		name = L"pwsh";
+	}
+	else if (parent_name == L"cmd.exe") {
+		name = L"cmd";
+	}
+	else if (parent_name == L"bash.exe") {
+		name = L"bash";
+	}
+	else if (parent_name == L"wsl.exe") {
+		name = L"wsl";
+	}
+	else {
+		// fallback to console title if the parent process is not one of the known shells
+		std::setlocale(LC_ALL, "en_US.UTF-8");
+		WCHAR console[UNLEN + 1]{};
+		GetConsoleTitleW((WCHAR*)console, 256);
+		name = console;
+	}
 
-	return console;
+	return name;
 }
 
 std::chrono::milliseconds getuptime() {
