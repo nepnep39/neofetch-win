@@ -86,6 +86,9 @@ const std::wstring win11art19 = L"llllllllllllllll   llllllllllllllll";
 
 // identical to win11art but you could customize this if you so choose
 
+// removed unknownartNN - was identical to win11art, now use custom art from utils
+
+/*
 const std::wstring unknownart01 = L"llllllllllllllll   llllllllllllllll";
 const std::wstring unknownart02 = L"llllllllllllllll   llllllllllllllll";
 const std::wstring unknownart03 = L"llllllllllllllll   llllllllllllllll";
@@ -105,3 +108,4 @@ const std::wstring unknownart16 = L"llllllllllllllll   llllllllllllllll";
 const std::wstring unknownart17 = L"llllllllllllllll   llllllllllllllll";
 const std::wstring unknownart18 = L"llllllllllllllll   llllllllllllllll";
 const std::wstring unknownart19 = L"llllllllllllllll   llllllllllllllll";
+*/

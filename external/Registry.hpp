@@ -13,6 +13,7 @@
 #include <system_error>
 
 // this header was not written by me, many thanks to m4x1m1l14n on Github for making my life a lot easier (well, at least the part of my life involving regkey string queries)
+// https://github.com/m4x1m1l14n/Registry
 
 namespace m4x1m1l14n
 {
@@ -90,8 +91,8 @@ namespace m4x1m1l14n
 		template <Registry::ValueType tag, typename T>
 		class Value : public RegistryValue {
 		protected:
-			explicit Value(const T& value) : m_value(value), m_type(tag) {  }
-			explicit Value(T&& value) : m_value(std::move(value)), m_type(tag) { }
+			explicit Value(const T& value) : m_value(value), m_type(tag) {}
+			explicit Value(T&& value) : m_value(std::move(value)), m_type(tag) {}
 
 		public:
 			Registry::ValueType GetType() const override { return tag; }
@@ -939,7 +940,7 @@ namespace m4x1m1l14n
 									std::shared_ptr<BYTE>(
 										data,
 										std::default_delete<BYTE[]>()
-										)
+									)
 								);
 							}
 						}
