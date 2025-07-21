@@ -133,7 +133,7 @@
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>.;.\src;.\include;.\external;.\src\core;.\src\system;.\src\hardware;.\src\windows;.\src\display;.\src\debug;\src\utils</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.;.\src;.\include;.\external;.\src\core;.\src\system;.\src\hardware;.\src\windows;.\src\display;\src\utils</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
