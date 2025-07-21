@@ -71,16 +71,16 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>.;.\src;.\include;.\external;.\src\core;.\src\system;.\src\hardware;.\src\windows;.\src\display;.\src\debug;\src\utils</IncludePath>
+    <IncludePath>.;.\src;.\include;.\external;.\src\core;.\src\system;.\src\hardware;.\src\windows;.\src\display;\src\utils</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>.;.\src;.\include;.\external;.\src\core;.\src\system;.\src\hardware;.\src\windows;.\src\display;.\src\debug;\src\utils</IncludePath>
+    <IncludePath>.;.\src;.\include;.\external;.\src\core;.\src\system;.\src\hardware;.\src\windows;.\src\display;\src\utils</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <IncludePath>.;.\src;.\include;.\external;.\src\core;.\src\system;.\src\hardware;.\src\windows;.\src\display;.\src\debug;\src\utils</IncludePath>
+    <IncludePath>.;.\src;.\include;.\external;.\src\core;.\src\system;.\src\hardware;.\src\windows;.\src\display;\src\utils</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <IncludePath>.;.\src;.\include;.\external;.\src\core;.\src\system;.\src\hardware;.\src\windows;.\src\display;.\src\debug;\src\utils</IncludePath>
+    <IncludePath>.;.\src;.\include;.\external;.\src\core;.\src\system;.\src\hardware;.\src\windows;.\src\display;\src\utils</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -145,7 +145,6 @@
   <ItemGroup>
     <ClCompile Include="external\Registry.cpp" />
     <ClCompile Include="src\core\neofetch.cpp" />
-    <ClCompile Include="src\debug\debug.cpp" />
     <ClCompile Include="src\display\display.cpp" />
     <ClCompile Include="src\hardware\hardware.cpp" />
     <ClCompile Include="src\main.cpp" />
@@ -157,7 +156,6 @@
     <ClInclude Include="external\Registry.hpp" />
     <ClInclude Include="include\art.h" />
     <ClInclude Include="include\colors.h" />
-    <ClInclude Include="include\debug.h" />
     <ClInclude Include="include\display.h" />
     <ClInclude Include="include\hardware.h" />
     <ClInclude Include="include\system.h" />
