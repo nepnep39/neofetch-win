@@ -1,7 +1,5 @@
 #include <windows.h>
 #include <Registry.hpp>
-#include <iostream>
-#include <iomanip>
 
 #include <hardware.h>
 
@@ -98,9 +96,6 @@ void getdisk()
 
 	if (check)
 	{
-		/*	printf("GB free: %llu\n", TotalNumberOfFreeBytes.QuadPart / (1024 * 1024));
-			printf("GB total: %llu\n", TotalNumberOfBytes.QuadPart / (1024 * 1024));*/
-
 		ULONGLONG totalspace = TotalNumberOfBytes.QuadPart / 1024 / 1024;
 		if (totalspace <= INT_MAX) total = static_cast<double>(totalspace);
 
@@ -110,17 +105,13 @@ void getdisk()
 		double totalgb = total / 1000;
 		double freegb = free / 1000;
 
-		totalgb = std::ceil(totalgb * 100.0) / 100.0;
-		freegb = std::ceil(freegb * 100.0) / 100.0;
+		totalgb = (totalgb * 100.0) / 100.0;
+		freegb = (freegb * 100.0) / 100.0;
 
-
-		std::wcout << LR"(C:\ )" << totalgb << L" GB (" << freegb << L" GB free)";
-
+		printf("C:\\ %.2f GB (%.2f GB free)", totalgb, freegb);
 	}
 	else
 	{
-		std::wcout << L"Disk info unknown";
-
+		printf("Disk info unknown");
 	}
-
 }

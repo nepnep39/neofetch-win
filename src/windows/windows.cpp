@@ -1,4 +1,3 @@
-#include <string>
 #include <Registry.hpp>
 
 #include <windows.h>

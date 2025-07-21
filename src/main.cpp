@@ -18,10 +18,10 @@ int main(int argc, char* argv[]) {
     for (int i = 1; i < argc; ++i) {
         std::string arg = argv[i];
         if (arg == "-d" || arg == "--debug") {
-            debugMode = true;
+            //debugMode = true;
         }
         if (arg == "-h" || arg == "--help") {
-            fprintf(stdout, "Usage: neofetch-win [-d|--debug] [-h|--help]\n");
+            fprintf(stdout, "Usage: neofetch-win [-h|--help]\n");
             fprintf(stdout, "Github: https://github.com/nepnep39/neofetch-win\n");
 			exit(0);
         }

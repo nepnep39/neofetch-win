@@ -1,8 +1,6 @@
 #include <windows.h>
 #include <Lmcons.h>
 #include <chrono>
-#include <locale>
-#include <string>
 
 #include <system.h>
 
@@ -25,7 +23,6 @@ std::wstring gethostname() {
 }
 
 std::wstring getconsole() {
-    std::setlocale(LC_ALL, "en_US.UTF-8");
 
     WCHAR console[UNLEN + 1]{};
     GetConsoleTitleW((WCHAR*)console, 256);
