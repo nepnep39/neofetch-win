@@ -1,13 +1,8 @@
 #include <iostream>
 #include <windows.h>
-#include <string.h>
-#include <Lmcons.h>
 #include <chrono>
 #include <iomanip>
-#include <algorithm>
-#include <fstream>
 #include <vector>
-#include <shlobj.h>
 
 #include <art.h>
 #include <Registry.hpp>

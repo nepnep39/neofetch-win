@@ -1,13 +1,11 @@
 #include <iostream>
 #include <windows.h>
-#include <locale>
 
 #include <display.h>
 #include <colors.h>
 
 void drawbar(double input)
 {
-	//bar colour define is at top of file
 
 	std::cout << "-=[ ";
 
