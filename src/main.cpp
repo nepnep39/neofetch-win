@@ -21,7 +21,7 @@ int main(int argc, char* argv[]) {
             //debugMode = true;
         }
         if (arg == "-h" || arg == "--help") {
-            fprintf(stdout, "Usage: neofetch-win [-d|--debug] [-h|--help]\n");
+            fprintf(stdout, "Usage: neofetch-win [-h|--help]\n");
             fprintf(stdout, "Github: https://github.com/nepnep39/neofetch-win\n");
 			exit(0);
         }
