@@ -6,8 +6,8 @@
 #include <iomanip>	// not needed in C++20
 #include <algorithm>	// not needed in C++20
 
-#include <art.h>
-#include <Registry.hpp>
+#include "art.h"
+#include "Registry.hpp"
 
 #define setlght SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 3)
 #define setdflt SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 7)
@@ -161,8 +161,15 @@ std::wstring getconsole() {
 	GetConsoleTitleW((WCHAR*)console, 256);
 
 	std::wstring consolestring = console;
-
-	return console;
+	if (consolestring.find(L"Program Files\\WindowsApp") != std::wstring::npos) {
+		consolestring.erase(0, 27);
+		consolestring = L"%WindowsApps%" + consolestring;
+	}
+	if (consolestring.find(L"Users") != std::wstring::npos){
+		consolestring.erase(0, 8);
+		consolestring = L"%Users%" + consolestring;
+	}
+	return consolestring;
 }
 
 std::chrono::milliseconds getuptime() {
