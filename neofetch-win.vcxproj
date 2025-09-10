@@ -71,16 +71,16 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>C:\Users\Eli\source\repos\neofetch-win\neofetch-win;$(IncludePath)</IncludePath>
+    <IncludePath>.;.\src;.\include;.\external;.\src\core;.\src\system;.\src\hardware;.\src\windows;.\src\display;\src\utils</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>C:\Users\nepnep\source\repos\neofetch-win\neofetch-win;$(IncludePath)</IncludePath>
+    <IncludePath>.;.\src;.\include;.\external;.\src\core;.\src\system;.\src\hardware;.\src\windows;.\src\display;\src\utils</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <IncludePath>C:\Users\Eli\source\repos\neofetch-win\neofetch-win;$(IncludePath)</IncludePath>
+    <IncludePath>.;.\src;.\include;.\external;.\src\core;.\src\system;.\src\hardware;.\src\windows;.\src\display;\src\utils</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <IncludePath>C:\Users\nepnep\source\repos\neofetch-win\neofetch-win;$(IncludePath)</IncludePath>
+    <IncludePath>.;.\src;.\include;.\external;.\src\core;.\src\system;.\src\hardware;.\src\windows;.\src\display;\src\utils</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -117,7 +117,7 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>C:\Users\Eli\source\repos\neofetch\neofetch-win;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.;.\src;.\include;.\external;.\src\core;.\src\system;.\src\hardware;.\src\windows;.\src\display;.\src\debug;\src\utils</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -133,7 +133,7 @@
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>C:\Users\Eli\source\repos\neofetch\neofetch-win;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.;.\src;.\include;.\external;.\src\core;.\src\system;.\src\hardware;.\src\windows;.\src\display;\src\utils</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -143,12 +143,24 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Registry.cpp" />
-    <ClCompile Include="Source.cpp" />
+    <ClCompile Include="external\Registry.cpp" />
+    <ClCompile Include="src\core\neofetch.cpp" />
+    <ClCompile Include="src\display\display.cpp" />
+    <ClCompile Include="src\hardware\hardware.cpp" />
+    <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\system\system.cpp" />
+    <ClCompile Include="src\utils\utils.cpp" />
+    <ClCompile Include="src\windows\windows.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="art.h" />
-    <ClInclude Include="Registry.hpp" />
+    <ClInclude Include="external\Registry.hpp" />
+    <ClInclude Include="include\art.h" />
+    <ClInclude Include="include\colors.h" />
+    <ClInclude Include="include\display.h" />
+    <ClInclude Include="include\hardware.h" />
+    <ClInclude Include="include\system.h" />
+    <ClInclude Include="include\utils.h" />
+    <ClInclude Include="include\windowsinfo.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
