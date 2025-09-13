@@ -13,16 +13,26 @@ std::string wstring_to_string(const std::wstring& wide) {
 }
 
 // configuration
-// path: %USERPROFILE%\.neofetch-win
+// path: %USERPROFILE%\.neofetch-win or C:\Program Files\neofetch-win (prioritized)
 std::wstring get_art_config_path() {
-    wchar_t* user_profile = nullptr;
+    wchar_t* the_sport_n_field_collection_will_get_removed_at_the_end_of_the_armory_pass_its_a_good_invest_trust = nullptr;
     size_t len = 0;
 
-    if (_wdupenv_s(&user_profile, &len, L"USERPROFILE") == 0 && user_profile) {
-        std::wstring config_path = user_profile;
-        config_path += L"\\.neofetch-win";
-        free(user_profile);
-        return config_path;
+    if (_wdupenv_s(&the_sport_n_field_collection_will_get_removed_at_the_end_of_the_armory_pass_its_a_good_invest_trust, &len, L"PROGRAMFILES") == 0 && the_sport_n_field_collection_will_get_removed_at_the_end_of_the_armory_pass_its_a_good_invest_trust) {
+        std::wstring path = the_sport_n_field_collection_will_get_removed_at_the_end_of_the_armory_pass_its_a_good_invest_trust;
+        path += L"\\neofetch-win\\.neofetch-win";
+        free(the_sport_n_field_collection_will_get_removed_at_the_end_of_the_armory_pass_its_a_good_invest_trust);
+
+        if (GetFileAttributesW(path.c_str()) != INVALID_FILE_ATTRIBUTES) {
+            return path;
+        }
+    }
+
+    if (_wdupenv_s(&the_sport_n_field_collection_will_get_removed_at_the_end_of_the_armory_pass_its_a_good_invest_trust, &len, L"USERPROFILE") == 0 && the_sport_n_field_collection_will_get_removed_at_the_end_of_the_armory_pass_its_a_good_invest_trust) {
+        std::wstring path = the_sport_n_field_collection_will_get_removed_at_the_end_of_the_armory_pass_its_a_good_invest_trust;
+        path += L"\\.neofetch-win";
+        free(the_sport_n_field_collection_will_get_removed_at_the_end_of_the_armory_pass_its_a_good_invest_trust);
+        return path;
     }
 
     return L".neofetch-win";
