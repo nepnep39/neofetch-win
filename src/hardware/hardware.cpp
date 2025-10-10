@@ -1,4 +1,6 @@
 #include <windows.h>
+#include <dxgi.h>
+#include <format>
 #include <Registry.hpp>
 
 #include <hardware.h>
@@ -39,9 +41,66 @@ std::wstring getcpu() {
 	}
 
 }
-
 std::wstring getgpu() {
+	std::wstring gpuDesc;
+	size_t vramMB = 0;
 
+	// Find the primary display device
+	DISPLAY_DEVICEW dd{};
+	dd.cb = sizeof(dd);
+	DWORD devNum = 0;
+	std::wstring primaryDeviceID;
+	while (EnumDisplayDevicesW(nullptr, devNum, &dd, 0)) {
+		if (dd.StateFlags & DISPLAY_DEVICE_PRIMARY_DEVICE) {
+			primaryDeviceID = dd.DeviceID;
+			gpuDesc = dd.DeviceString;
+			break;
+		}
+		devNum++;
+	}
+
+	// use DXGI to get gpu details (VRAM size), Lazy load dxgi.dll to avoid dependency issues on older systems
+	HMODULE hDXGI = LoadLibraryW(L"dxgi.dll");
+	if (hDXGI) {
+		typedef HRESULT(WINAPI* PFN_CreateDXGIFactory)(REFIID, void**);
+		PFN_CreateDXGIFactory pCreateDXGIFactory = (PFN_CreateDXGIFactory)GetProcAddress(hDXGI, "CreateDXGIFactory");
+		if (pCreateDXGIFactory) {
+			IDXGIFactory* pFactory = nullptr;
+			HRESULT hr = pCreateDXGIFactory(__uuidof(IDXGIFactory), (void**)(&pFactory));
+			if (SUCCEEDED(hr) && pFactory) {
+				
+				// Match DXGI adapter to primary display device
+				IDXGIAdapter* pAdapter = nullptr;
+				for (UINT i = 0; SUCCEEDED(pFactory->EnumAdapters(i, &pAdapter)); ++i) {
+					DXGI_ADAPTER_DESC desc;
+					if (SUCCEEDED(pAdapter->GetDesc(&desc))) {
+						// Convert LUID to string to match with DeviceID
+						WCHAR luidStr[64];
+						swprintf_s(luidStr, L"PCI\\VEN_%04X&DEV_%04X", desc.VendorId, desc.DeviceId);
+						if (!primaryDeviceID.empty() && wcsstr(primaryDeviceID.c_str(), luidStr)) {
+							gpuDesc = desc.Description;
+							SIZE_T vramBytes = desc.DedicatedVideoMemory;
+							vramMB = static_cast<size_t>(vramBytes / (1024 * 1024));
+							pAdapter->Release();
+							break;
+						}
+					}
+					pAdapter->Release();
+				}
+				pFactory->Release();
+			}
+		}
+		FreeLibrary(hDXGI);
+	}
+
+	if (!gpuDesc.empty()) {
+		if(vramMB == 0)
+			return gpuDesc;
+		else
+			return std::format(L"{} ({} MB)", gpuDesc, vramMB);
+	}
+
+	// fallack to registry method if above fails
 	using namespace m4x1m1l14n;
 
 	try
