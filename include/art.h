@@ -87,6 +87,7 @@ const std::wstring win11art19 = L"llllllllllllllll   llllllllllllllll";
 // identical to win11art but you could customize this if you so choose
 
 // removed unknownartNN - was identical to win11art, now use custom art from utils
+// 2026-01-19 removed custom art but there should be no need for this anyways
 
 /*
 const std::wstring unknownart01 = L"llllllllllllllll   llllllllllllllll";

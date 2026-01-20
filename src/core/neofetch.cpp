@@ -11,8 +11,9 @@
 #include <windowsinfo.h>
 #include <display.h>
 #include <colors.h>
-#include "utils.h" 
+#include "utils.h"
 #include <debug.h>
+
 
 void render_neofetch_display(int art_type) {
 
@@ -37,15 +38,16 @@ void render_neofetch_display(int art_type) {
 
     std::wstring divider = L"--------------";
 
-    std::vector<std::wstring> custom_art = load_custom_art();
+    //std::vector<std::wstring> custom_art = load_custom_art();
 
     std::vector<std::wstring> art_lines;
 
-    if (!custom_art.empty()) {
-        // use custom art if available
-        art_lines = custom_art;
-    }
-    else if (art_type == 0) {
+    //if (!custom_art.empty()) {
+    //    // use custom art if available
+    //    art_lines = custom_art;
+    //}
+
+    if (art_type == 0) {
         // Windows 10
         art_lines = {
             win10art01, win10art02, win10art03, win10art04, win10art05,
